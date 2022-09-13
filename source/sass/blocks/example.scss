@@ -6,7 +6,7 @@
   @media (min-width: $tablet-width) {
     padding-top: 43px;
     padding-bottom: 100px;
-    background-image: linear-gradient(to bottom, #ffffff 57%, #f2f2f2 0);
+    background-image: linear-gradient(to bottom, #ffffff 619px, #f2f2f2 0);
   }
 
   @media (min-width: $desktop-width) {
@@ -25,7 +25,7 @@
   @media (min-width: $desktop-width) {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 224px;
+    gap: 10%;
   }
 }
 
@@ -35,7 +35,7 @@
   font-weight: 400;
   font-size: 36px;
   line-height: 1.11;
-  margin-bottom: 41px;
+  margin-bottom: 40px;
 
   @media (min-width: $tablet-width) {
     font-size: 60px;
@@ -56,28 +56,40 @@
   color: $color-charcoal;
   margin-bottom: 20px;
 
+  br {
+    display: none;
+  }
+
   @media (min-width: $tablet-width) {
     font-size: 16px;
     line-height: 1.5;
     margin-bottom: 53px;
+
+    br {
+      display: block;
+    }
   }
 
   @media (min-width: $desktop-width) {
     margin-bottom: 68px;
     max-width: 436px;
+
+    br {
+      display: none;
+    }
   }
 }
 
 .example__stats {
   align-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 
   @media (min-width: $tablet-width) {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     margin-bottom: 104px;
     align-items: center;
+    gap: 0 169px;
   }
 
   @media (min-width: $desktop-width) {
@@ -121,7 +133,7 @@
   }
 
   @media (min-width: $desktop-width) {
-    padding: 16px 29px 19px;
+    padding: 14px 29px 19px;
   }
 }
 
@@ -139,36 +151,37 @@
 }
 
 .example__stats-subtitle {
-  font-family: $Arial;
+  font-family: "Arial", "Helvetica", sans-serif;
   font-size: 12px;
   line-height: 1;
-  color: $color-charcoal;
+  color: #444444;
   position: absolute;
   left: 0;
   right: 0;
-  margin: 0 auto;
+  margin: 0 16px;
   bottom: 8px;
-  padding: 0 10px;
   display: inline-block;
-  width: calc(100% - 38px);
+  width: calc(100% - 36px);
   transform: translateY(100%);
-  background-color: $color-white-smoke;
+  background-color: #f2f2f2;
   text-align: center;
 
   @media (min-width: $tablet-width) {
     font-size: 14px;
     line-height: 1;
     background-color: $color-default-white;
-    width: 100%;
+    margin: 0 14px;
+    width: calc(100% - 29px);
   }
 
   @media (min-width: $desktop-width) {
     background-color: $color-white-smoke;
-    width: 100%;
   }
 
   br {
-    display: none;
+    @media (min-width: $tablet-width) {
+      display: none;
+    }
   }
 }
 
@@ -199,42 +212,100 @@
 }
 
 .example__demo {
-  text-align: center;
+  display: flex;
+  position: relative;
+  margin: 0 auto;
+  width: 280px;
+  height: 256px;
 
   @media (min-width: $tablet-width) {
-    position: relative;
     width: 560px;
     height: 512px;
-    margin: 0 auto;
   }
+}
+
+.example__demo-image {
+  width: 50%;
+  height: 100%;
 }
 
 .example__demo-images {
-  @media (min-width: $tablet-width) {
-    position: absolute;
-    width: 100%;
-    height: 512px;
-    right: 0;
-  }
+  height: 100%;
+  object-fit: cover;
 }
 
 .example__demo-images--fat {
-  position: absolute;
-  clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+  object-position: left;
 }
 
 .example__demo-images--skinny {
-  clip-path: polygon(50% 0, 100% 0%, 100% 100%, 50% 100%);
+  object-position: right;
+}
+
+.example__demo-toggle {
+  position: absolute;
+  content: "";
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  background-color: $color-dim-grey;
+  z-index: 2;
+  margin-left: -2px;
+  cursor: e-resize;
+
+  &:hover {
+    background-color: $color-apple;
+
+    .example__demo-button {
+      border-color: $color-apple;
+    }
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
 }
 
 .example__demo-button {
-  margin: 0;
-  padding: 0;
-  border: none;
-  cursor: pointer;
-  font-family: $Oswald;
-  text-transform: uppercase;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
+  content: "";
+  position: absolute;
+  left: calc(50% - 40px / 2);
+  top: calc(50% - 40px / 2);
+  width: 40px;
+  height: 40px;
+  background-color: $color-default-white;
+  border-radius: 50%;
+  border: 2px solid $color-dim-grey;
+  z-index: 1;
+  cursor: e-resize;
+
+  &:hover {
+    &::after,
+    &::before {
+      background-color: $color-apple;
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+    background-color: $color-dim-grey;
+    width: 8px;
+    height: 18px;
+    top: 9px;
+    right: 6px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+    background-color: $color-dim-grey;
+    width: 8px;
+    height: 18px;
+    top: 9px;
+    left: 6px;
+    transform: rotate(180deg);
+  }
 }

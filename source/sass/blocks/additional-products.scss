@@ -65,7 +65,7 @@
 
   @media (min-width: $desktop-width) {
     padding: 0;
-    margin-bottom: 79px;
+    margin-bottom: 80px;
   }
 }
 
@@ -97,7 +97,7 @@
 
 .additional-products__item {
   border-top: 1px solid $color-very-light-grey;
-  padding: 13px 0 16px 0;
+  padding: 13px 0 18px 0;
   position: relative;
 
   @media (min-width: $tablet-width) {
@@ -147,6 +147,7 @@
   @media (min-width: $desktop-width) {
     justify-content: space-between;
     gap: 0;
+    flex: 0 0 47%;
   }
 }
 
@@ -179,6 +180,10 @@
     font-size: 20px;
     line-height: 1;
   }
+
+  @media (min-width: $desktop-width) {
+    flex: 0 0 53%;
+  }
 }
 
 .additional-products__unit {
@@ -198,6 +203,7 @@
   flex-wrap: wrap;
   gap: 15px 0;
   justify-content: space-between;
+  align-items: center;
 
   @media (min-width: $tablet-width) {
     margin-bottom: 19px;
@@ -231,7 +237,6 @@
     width: 78px;
     height: 80px;
     top: 59px;
-    left: 101px;
     background-image: url("../img/catalog/icon_gift.svg");
 
     @media (min-width: $tablet-width) {
@@ -293,4 +298,8 @@
     font-size: 16px;
     line-height: 1.25;
   }
+}
+
+.additional-products__price--ident-right {
+  padding-right: 10px;
 }
