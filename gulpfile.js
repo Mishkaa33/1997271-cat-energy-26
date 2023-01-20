@@ -13,6 +13,13 @@ import svgo from "gulp-svgmin";
 import svgstore from "gulp-svgstore";
 import { deleteAsync } from "del";
 
+var gulp = require("gulp");
+var ghPages = require("gulp-gh-pages");
+
+gulp.task("deploy", function () {
+  return gulp.src("./dist/**/*").pipe(ghPages());
+});
+
 // Styles
 
 export const styles = () => {
